@@ -47,7 +47,7 @@ Queries:
 
 NOTE: Only a subset of the queries could be run since AWS Lambda currently supports a maximum container size of 1536MB. The benchmark is designed to increase the output size by an order of magnitude for the a,b,c iterations. Given that the output size doesn't fit in Lambda memory, we currently can't get the final output. 
 
-
+```
 |-----------------------|---------|---------|--------------|
 | Technology            | Scan 1a | Scan 1b | Aggregate 2a | 
 |-----------------------|---------|---------|--------------|
@@ -75,7 +75,7 @@ BigLambda Cost:
 |---------|---------|--------------|
 | 0.00477 | 0.0055  | 0.1129       |   
 |---------|---------|--------------|
-
+```
 
 ## Getting Started
 
