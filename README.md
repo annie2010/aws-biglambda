@@ -1,6 +1,6 @@
-# BigLambda: Serverless framework to run ad-hoc MapReduce jobs
+# BigLambda: A Serverless Framework to Run Ad Hoc MapReduce Jobs
 
-BigLambda is a cost effective way to run ad-hoc MapReduce jobs. The price-per-query model, ease of use make it very suitable for data scientists and developers alike. 
+BigLambda is a cost-effective way to run ad hoc MapReduce jobs. The price-per-query model and ease of use make it very suitable for data scientists and developers alike. 
 
 ## Architecture
 
@@ -12,46 +12,45 @@ BigLambda is a cost effective way to run ad-hoc MapReduce jobs. The price-per-qu
 * Close to "zero" setup time
 * Pay per execution model for every job
 * Cheaper than other data processing solutions
-* Enable processing of data within a VPC
+* Enables data processing within a VPC
 
 ## Languages
 * Python 2.7 (active development)
 * Node.js
 
-The python version will be the one under active developement and feature enhancements
+The Python version is under active development and feature enhancement.
 
 ### Benchmark
 
-To compare BigLambda with other data processing frameworks, a subset of the Amplab benchmark was run. The table below
-has the execution time for each of the workloads in seconds 
+To compare BigLambda with other data processing frameworks, we ran a subset of the Amplab benchmark. The table below has the execution time for each workload in seconds: 
 
 Dataset
 
 s3n://big-data-benchmark/pavlo/[text|text-deflate|sequence|sequence-snappy]/[suffix].
 
 S3 Suffix   Scale Factor    Rankings (rows) Rankings (bytes)    UserVisits (rows)   UserVisits (bytes)  Documents (bytes)
-/5nodes/    5               90 Million      6.38GB              775 Million         126.8GB             136.9GB
+/5nodes/    5               90 Million      6.38 GB              775 Million         126.8 GB             136.9 GB
 
 Queries:
 
-* Scan Query  (90M Rows, 6.36GB of data)
+* Scan query  (90M Rows, 6.36GB of data)
 * SELECT pageURL, pageRank FROM rankings WHERE pageRank > X   ( X= {1000, 100, 10} )
 
     * 1a) SELECT pageURL, pageRank FROM rankings WHERE pageRank > 1000   
     * 1b) SELECT pageURL, pageRank FROM rankings WHERE pageRank > 100   
 
 
-* Aggregation Query on UserVisits ( 775M rows, ~127GB of data)
+* Aggregation query on UserVisits ( 775M rows, ~127GB of data)
     * 2a) SELECT SUBSTR(sourceIP, 1, 8), SUM(adRevenue) FROM uservisits GROUP BY SUBSTR(sourceIP, 1, 8)
 
 
-NOTE: Only a subset of the queries could be run since AWS Lambda currently supports a maximum container size of 1536MB. The benchmark is designed to increase the output size by an order of magnitude for the a,b,c iterations. Given that the output size doesn't fit in Lambda memory, we currently can't process to compute the final output. 
+NOTE: Only a subset of the queries could be run as AWS Lambda currently supports a maximum container size of 1536 MB. The benchmark is designed to increase the output size by an order of magnitude for the a,b,c iterations. Given that the output size doesn't fit in Lambda memory, we currently can't process to compute the final output. 
 
 ```
 |-----------------------|---------|---------|--------------|
 | Technology            | Scan 1a | Scan 1b | Aggregate 2a | 
 |-----------------------|---------|---------|--------------|
-| Redshift (HDD)        | 2.49    | 2.61    | 25.46        |
+| Amazon Redshift (HDD) | 2.49    | 2.61    | 25.46        |
 |-----------------------|---------|---------|--------------|
 | Impala - Disk - 1.2.3 | 12.015  | 12.015  | 113.72       |
 |-----------------------|---------|---------|--------------|
@@ -65,7 +64,7 @@ NOTE: Only a subset of the queries could be run since AWS Lambda currently suppo
 |-----------------------|---------|---------|--------------|
 | Tez - 0.2.0           | 28.22   | 36.35   | 377.48       |
 |-----------------------|---------|---------|--------------|
-| Big Lambda            | 39      | 47      | 200          |   
+| BigLambda             | 39      | 47      | 200          |   
 |-----------------------|---------|---------|--------------|
 
 BigLambda Cost:
@@ -77,18 +76,20 @@ BigLambda Cost:
 |---------|---------|--------------|
 ```
 
-## Getting Started
+## Getting started
+Here's how you get started with BigLambda.
 
 ### Prerequisites
 
 * Lambda execution role with 
-    * S3 read/write access (http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-create-iam-role.html)
-    * Cloudwatch log access (logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents) - check
-      policy.json for a sample that you can extend.
+    * [S3 read/write access](http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-create-iam-role.html)
+    * Cloudwatch log access (logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents)
+ 
+Check policy.json for a sample that you can extend.
 
-* To execute the driver locally make sure you configure your AWS profile with access to 
-    * S3 (http://docs.aws.amazon.com/AmazonS3/latest/dev/example-policies-s3.html)
-    * Lambda (http://docs.aws.amazon.com/lambda/latest/dg/lambda-api-permissions-ref.html)
+* To execute the driver locally, make sure you configure your AWS profile with access to: 
+    * [S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/example-policies-s3.html)
+    * [Lambda](http://docs.aws.amazon.com/lambda/latest/dg/lambda-api-permissions-ref.html)
 
 ### Setting up a job
 
@@ -118,12 +119,13 @@ BigLambda Cost:
 
 ```
 
-### Running example
+### Running an example
 
 * Edit the configuration JSON 
 * Write your mapper and reducer logic
-* Run the driver: 
-$ python driver.py
+* Run the driver:
+ 
+	$ python driver.py
 
 ### Outputs 
 
