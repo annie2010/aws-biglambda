@@ -1,6 +1,6 @@
-# BigLambda : A serverless framework to run ad-hoc map-reduce jobs
+# BigLambda: Serverless framework to run ad-hoc MapReduce jobs
 
-BigLambda is a cost effective way to run ad-hoc map-reduce jobs. The price-per-query model, ease of use make it very suitable for data scientists and developers alike. 
+BigLambda is a cost effective way to run ad-hoc MapReduce jobs. The price-per-query model, ease of use make it very suitable for data scientists and developers alike. 
 
 ## Architecture
 
@@ -121,8 +121,8 @@ BigLambda Cost:
 
 * Edit the configuration JSON 
 * Write your mapper and reducer logic
-
-* Run the driver: $ python driver.py
+* Run the driver: 
+$ python driver.py
 
 ### Outputs 
 
@@ -138,5 +138,4 @@ smallya$ head –n 3 result
 67.23.87,5.874290244999999
 30.94.22,96.25011190570001
 25.77.91,14.262780186000002
-
 
