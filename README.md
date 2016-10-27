@@ -45,7 +45,7 @@ Queries:
     * 2a) SELECT SUBSTR(sourceIP, 1, 8), SUM(adRevenue) FROM uservisits GROUP BY SUBSTR(sourceIP, 1, 8)
 
 
-NOTE: Only a subset of the queries could be run since AWS Lambda currently supports a maximum container size of 1536MB. The benchmark is designed to increase the output size by an order of magnitude for the a,b,c iterations. Given that the output size doesn't fit in Lambda memory, we currently can't get the final output. 
+NOTE: Only a subset of the queries could be run since AWS Lambda currently supports a maximum container size of 1536MB. The benchmark is designed to increase the output size by an order of magnitude for the a,b,c iterations. Given that the output size doesn't fit in Lambda memory, we currently can't process to compute the final output. 
 
 ```
 |-----------------------|---------|---------|--------------|
@@ -83,7 +83,8 @@ BigLambda Cost:
 
 * Lambda execution role with 
     * S3 read/write access (http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-create-iam-role.html)
-    * Cloudwatch log access (logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents)
+    * Cloudwatch log access (logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents) - check
+      policy.json for a sample that you can extend.
 
 * To execute the driver locally make sure you configure your AWS profile with access to 
     * S3 (http://docs.aws.amazon.com/AmazonS3/latest/dev/example-policies-s3.html)
