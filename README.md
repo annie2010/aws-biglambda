@@ -4,7 +4,7 @@ BigLambda is a cost effective way to run ad-hoc MapReduce jobs. The price-per-qu
 
 ## Architecture
 
-![alt text] (https://s3.amazonaws.com/smallya-test/BigLambda-arch4.svg "BigLambda Architecture")
+![alt text] (https://s3.amazonaws.com/smallya-test/bl-git.png "BigLambda Architecture")
 
 
 ## Features
@@ -126,6 +126,7 @@ $ python driver.py
 
 ### Outputs 
 
+```
 smallya$ aws s3 ls s3://JobBucket/ biglambda-1node-0 --recursive --human-readable --summarize
 
 2016-09-26 15:01:17   69 Bytes 0py-biglambda-1node-2/jobdata
@@ -138,4 +139,4 @@ smallya$ head –n 3 result
 67.23.87,5.874290244999999
 30.94.22,96.25011190570001
 25.77.91,14.262780186000002
-
+```
